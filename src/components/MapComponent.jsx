@@ -100,17 +100,6 @@ const iconColors = {
   d3: '#64748b'     // Gray
 };
 
-// Component to handle auto-panning (Bonus polish)
-const MapController = ({ position }) => {
-  const map = useMap();
-  useEffect(() => {
-    if (position) {
-      map.panTo([position.lat, position.lng], { animate: true, duration: 0.5 });
-    }
-  }, [position, map]);
-  return null;
-};
-
 const MapComponent = ({ isDarkMode }) => {
   // Center map around Bangalore based on Origin coordinates
   const initialCenter = [routeData[0].lat, routeData[0].lng];
@@ -125,7 +114,6 @@ const MapComponent = ({ isDarkMode }) => {
   return (
     <div className="w-full h-full relative">
       <MapContainer center={initialCenter} zoom={12} className="w-full h-full">
-        <MapController position={simulation.currentPosition} />
         <TileLayer
           key={tileUrl}
           url={tileUrl}
