@@ -121,7 +121,7 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
         <TileLayer
           key={tileUrl}
           url={tileUrl}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
 
         {/* Draw dashed polyline connecting points */}
