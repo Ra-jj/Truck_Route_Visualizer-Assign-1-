@@ -75,7 +75,7 @@ const TruckStatusPanel = ({
           <div className="flex flex-col overflow-hidden mr-2">
             <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1">Next stop</span>
             <span className="text-gray-800 dark:text-gray-200 font-medium truncate">
-              {nextStop || "Completed"}
+              {nextStop || "Route Complete"}
             </span>
           </div>
           <div className="flex flex-col items-end shrink-0">

@@ -127,6 +127,7 @@ const MapComponent = ({ isDarkMode }) => {
       <MapContainer center={initialCenter} zoom={12} className="w-full h-full">
         <MapController position={simulation.currentPosition} />
         <TileLayer
+          key={tileUrl}
           url={tileUrl}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
@@ -156,7 +157,11 @@ const MapComponent = ({ isDarkMode }) => {
         {/* Animated Truck Marker */}
         {simulation.currentPosition && (
           <Marker 
-            position={[simulation.currentPosition.lat, simulation.currentPosition.lng]}
+            position={
+              simulation.isFinished 
+                ? [simulation.currentPosition.lat + 0.0005, simulation.currentPosition.lng] 
+                : [simulation.currentPosition.lat, simulation.currentPosition.lng]
+            }
             icon={truckIcon}
             zIndexOffset={1000} // Keep truck on top
           >

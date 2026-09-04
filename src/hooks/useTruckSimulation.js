@@ -22,7 +22,7 @@ export function useTruckSimulation(route) {
   );
   
   const [distanceCovered, setDistanceCovered] = useState(0);
-  const completedStops = currentLegIndex;
+  const completedStops = Math.min(currentLegIndex, totalStops);
   
   // Calculate the next stop name
   const nextStop = isFinished ? null : route[currentLegIndex + 1]?.name;
@@ -57,7 +57,7 @@ export function useTruckSimulation(route) {
       if (nextProgress >= 1) {
         // Leg completed, move to next leg
         nextProgress = 0;
-        setCurrentLegIndex(prevIndex => prevIndex + 1);
+        setCurrentLegIndex(prevIndex => Math.min(prevIndex + 1, totalStops));
       }
       
       return nextProgress;
