@@ -22,3 +22,9 @@ html, body, #root {
 .dark .leaflet-tile-pane {
   filter: invert(1) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
+
+/* Push Leaflet's default topleft zoom control down to avoid overlapping the custom Legend pill */
+.leaflet-top.leaflet-left .leaflet-control-zoom {
+  margin-top: 80px;
+  margin-left: 16px;
+}

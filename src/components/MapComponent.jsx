@@ -115,7 +115,7 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
   return (
     <div className="w-full h-full relative">
       <MapContainer center={initialCenter} zoom={12} zoomControl={false} className="w-full h-full">
-        <ZoomControl position="bottomleft" />
+        <ZoomControl position="topleft" />
         <TileLayer
           key={tileUrl}
           url={tileUrl}
