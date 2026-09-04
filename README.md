@@ -1,58 +1,55 @@
 # Logistics Truck Route Visualizer
 
-![Route Visualizer](https://via.placeholder.com/1200x600.png?text=Logistics+Truck+Route+Visualizer) 
+![Live Preview](https://via.placeholder.com/1200x600.png?text=Logistics+Route+Visualizer)
 
-A high-performance, responsive React application built as a frontend assignment submission. It simulates real-time truck tracking along a predefined delivery route, demonstrating strong component architecture, custom state management, and an eye for premium UI/UX.
+A modern, highly-polished React application that visualizes a logistics truck's journey across multiple delivery points. Built with a focus on buttery-smooth animation physics, clean architecture, and a premium "glassmorphism" UI aesthetic.
 
-[**Live Demo**](#) *(Placeholder: Update with Vercel link)*
+## 🌟 Key Features
 
-## 🚀 Key Features & What It Demonstrates
-
-1. **State Management & Simulation Engine**: 
-   - Uses a custom tick-based React hook (`useTruckSimulation`) to process route progression. 
-   - Calculates geographic distance on the fly using the **Haversine formula**.
-   - Linearly interpolates (LERP) the truck's coordinates between origin and delivery points for buttery smooth animation.
-2. **Map Integration**: 
-   - Implements `react-leaflet` combined with fully custom HTML/CSS markers (no default blurry map pins).
-   - Features an auto-panning camera that tracks the vehicle during transit.
-3. **Advanced HUD & Telemetry**: 
-   - A glassmorphism-styled dashboard displays real-time telemetry.
-   - Calculates exact **ETA** in minutes, formatting, and live transit status.
-   - Fully interactive with Play, Pause, and Reset controls perfectly synced with the simulation state.
-4. **Premium UI/UX & Dark Mode**: 
-   - Designed mobile-first using Tailwind CSS.
-   - Seamlessly transitions between Light and Dark mode, actively swapping out the Leaflet tile providers (`Voyager` vs `Dark_All`) for an integrated aesthetic.
+- **Constant-Velocity Physics Engine**: Unlike standard point-to-point animations, the truck's speed is calculated dynamically using the real-world **Haversine formula**. The truck travels at a simulated proportional speed across legs of vastly different lengths without stuttering or jumping.
+- **Glassmorphism Dashboard**: A floating, highly-compact status panel built with Tailwind CSS v4, featuring a 2-column grid for live stats (Distance covered, ETA, Next Stop, and Progress).
+- **Interactive Controls**: Users can **Pause**, **Resume**, and **Reset** the simulation at any point mid-route.
+- **Flawless Dark Mode**: A custom CSS inversion filter (`filter: invert(1) hue-rotate(180deg)`) dynamically transforms standard OpenStreetMap tiles into a sleek dark aesthetic, completely eliminating the need for third-party mapping API keys or watermarks.
+- **Responsive & Minimalist**: Includes a pill-shaped control toolbar, minimal legend overlays, and perfectly offset markers that adapt to any screen size.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: React.js (Vite)
-- **Styling**: Tailwind CSS
-- **Mapping**: Leaflet + React-Leaflet
-- **Icons**: Lucide-React
-- **Deployment**: Vercel ready
+- **Framework**: React 19 + Vite
+- **Styling**: Tailwind CSS v4 (with `Inter` typography)
+- **Mapping**: `react-leaflet` + `leaflet` (OpenStreetMap standard tiles)
+- **Icons**: `lucide-react`
 
-## 🧠 Stated Assumptions
+## 🚀 Getting Started
 
-- **ETA Calculation**: Since we are lacking real-world traffic data, the ETA dynamically divides the remaining physical distance of the route by an assumed average truck speed of **40 km/h**.
-- **Mock GPS Pinging**: Rather than immediately snapping the truck across large chunks, the engine runs on a 100ms interval (`setInterval`), simulating continuous GPS tracking pings being sent from a truck hardware unit.
-- **Route Coordinates**: The coordinates used (Origin, D1, D2, D3) are hardcoded locations across Bangalore, India to provide a realistic map footprint, rather than pulling from a live geocoding backend API.
+### Prerequisites
+Make sure you have Node.js (v18+ recommended) installed.
 
-## 💻 How to Run Locally
+### Installation
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
-   git clone <repo-url>
-   cd Truck_Route_Visualizer
+   git clone https://github.com/Ra-jj/Truck_Route_Visualizer-Assign-1-.git
+   cd Truck_Route_Visualizer-Assign-1-
    ```
 
-2. **Install dependencies:**
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Start the development server:**
+3. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and visit `http://localhost:5173`.
+4. Open your browser and navigate to `http://localhost:5173`.
+
+## 🧠 Architectural Decisions
+
+- **State Management**: The entire route simulation is decoupled from the UI rendering. `useTruckSimulation.js` acts as a pure state machine, running a 100ms interval tick that outputs exactly where the truck should be (via Linear Interpolation). 
+- **React StrictMode Resilience**: Complex leg-transition logic is isolated in specific `useEffect` hooks to prevent React 18/19's StrictMode double-invocations from skipping legs.
+- **API-Key Free**: By using base OpenStreetMap tiles and applying CSS inversion for dark mode, the application remains entirely free and open-source without displaying `API KEY REQUIRED` watermarks from providers like CartoDB or Mapbox.
+- **Performance**: Disabled aggressive Leaflet auto-panning to prevent the DOM map tile renderer from fighting the 100ms SVG interpolation updates, resulting in buttery-smooth movement.
+
+## 📝 License
+This project is open source and available under the [MIT License](LICENSE).
