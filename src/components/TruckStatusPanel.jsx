@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Pause, RotateCcw, Truck } from 'lucide-react';
+import { Truck } from 'lucide-react';
 import { routeData } from '../data/route';
 
 const TruckStatusPanel = ({ 

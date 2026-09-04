@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapComponent from './components/MapComponent';
-import { Moon, Sun } from 'lucide-react';
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
