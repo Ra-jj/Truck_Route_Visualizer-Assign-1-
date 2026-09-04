@@ -166,7 +166,7 @@ const MapComponent = ({ isDarkMode }) => {
       </MapContainer>
       
       {/* Title Overlay */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg z-[1000] border border-gray-100 dark:border-slate-700">
+      <div className="hidden md:flex absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg z-[1000] border border-gray-100 dark:border-slate-700">
         <h1 className="text-gray-800 dark:text-gray-100 font-semibold text-lg tracking-wide flex items-center gap-2">
           <Truck size={20} className="text-indigo-600 dark:text-indigo-400" />
           Logistics Route Visualizer
@@ -174,17 +174,17 @@ const MapComponent = ({ isDarkMode }) => {
       </div>
 
       {/* Legend Overlay */}
-      <div className="absolute top-4 left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-4 py-3 rounded-xl shadow-lg z-[1000] border border-gray-100 dark:border-slate-700 flex flex-col gap-3">
-        <h3 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Legend</h3>
-        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <CircleDot size={18} className="text-green-500" /> Origin
+      <div className="absolute top-4 left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-xl shadow-lg z-[1000] border border-gray-100 dark:border-slate-700 flex flex-col gap-2 md:gap-3">
+        <h3 className="text-[10px] md:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-0 md:mb-1">Legend</h3>
+        <div className="flex items-center gap-2 text-xs md:text-sm text-gray-700 dark:text-gray-300">
+          <CircleDot size={16} className="text-green-500" /> Origin
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <MapPin size={18} className="text-red-500" /> Delivery Point
+        <div className="flex items-center gap-2 text-xs md:text-sm text-gray-700 dark:text-gray-300">
+          <MapPin size={16} className="text-red-500" /> Delivery Point
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <div className="w-5 h-5 bg-indigo-600 dark:bg-indigo-500 rounded flex items-center justify-center">
-            <Truck size={12} className="text-white" />
+        <div className="flex items-center gap-2 text-xs md:text-sm text-gray-700 dark:text-gray-300">
+          <div className="w-4 h-4 md:w-5 md:h-5 bg-indigo-600 dark:bg-indigo-500 rounded flex items-center justify-center">
+            <Truck size={10} className="text-white" />
           </div> Truck (Live)
         </div>
       </div>
