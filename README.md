@@ -8,7 +8,7 @@ A modern React application that visualizes a logistics truck's journey across mu
 
 ## 🌟 Key Features
 
-- **Constant-Velocity Physics Engine**: Unlike standard point-to-point animations, the truck's speed is calculated dynamically using the real-world **Haversine formula**. The truck travels at a simulated proportional speed across legs of vastly different lengths without stuttering or jumping.
+- **Animation Logic**: Instead of standard point-to-point animations, the truck's speed is calculated using the **Haversine formula**. The truck travels at a proportional speed across legs of different lengths so it doesn't jump around.
 - **Compact Dashboard**: A floating status panel built with Tailwind CSS v4, featuring a 2-column grid for live stats (Distance covered, ETA, Next Stop, and Progress).
 - **Interactive Controls**: Users can **Pause**, **Resume**, and **Reset** the simulation at any point mid-route.
 - **Dark Mode**: A custom CSS inversion filter (`filter: invert(1) hue-rotate(180deg)`) dynamically transforms standard OpenStreetMap tiles into a dark aesthetic, completely eliminating the need for third-party mapping API keys or watermarks.
@@ -55,8 +55,8 @@ Make sure you have Node.js (v18+ recommended) installed.
 
 ## 🧠 Architectural Decisions
 
-- **State Management**: The entire route simulation is decoupled from the UI rendering. `useTruckSimulation.js` acts as a pure state machine, running a 100ms interval tick that outputs exactly where the truck should be (via Linear Interpolation). 
-- **React StrictMode Resilience**: Complex leg-transition logic is isolated in specific `useEffect` hooks to prevent React 19's StrictMode double-invocations from skipping legs.
+- **Component State**: The route simulation is decoupled from the UI rendering. `useTruckSimulation.js` acts as a state machine, running a 100ms interval tick that outputs where the truck should be. 
+- **Effect Cleanup**: Leg-transition logic is isolated in specific `useEffect` hooks to handle React 19's StrictMode double-invocations without breaking the route index.
 - **API-Key Free**: By using base OpenStreetMap tiles and applying CSS inversion for dark mode, the application remains entirely free and open-source without displaying `API KEY REQUIRED` watermarks from providers like CartoDB or Mapbox.
 - **Performance**: Disabled aggressive Leaflet auto-panning to prevent the DOM map tile renderer from fighting the 100ms SVG interpolation updates, resulting in smooth movement.
 

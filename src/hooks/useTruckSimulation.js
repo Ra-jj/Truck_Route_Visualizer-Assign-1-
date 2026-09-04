@@ -67,7 +67,7 @@ export function useTruckSimulation(route) {
     });
   }, [isValidRoute, isPaused, isFinished, currentLegIndex]);
 
-  // Safely handle leg transitions in a separate effect to avoid React StrictMode double-invocations
+  // Handle leg transitions
   useEffect(() => {
     if (progress >= 1) {
       setProgress(0);
@@ -97,11 +97,11 @@ export function useTruckSimulation(route) {
 
     if (!startPoint || !endPoint) return;
 
-    // 1. Update position via LERP
+    // Update position
     const newPos = interpolateCoordinates(startPoint, endPoint, progress);
     setCurrentPosition(newPos);
 
-    // 2. Calculate Distance
+    // Calculate Distance
     let totalDist = 0;
     // Sum fully completed legs
     for (let i = 0; i < currentLegIndex; i++) {
