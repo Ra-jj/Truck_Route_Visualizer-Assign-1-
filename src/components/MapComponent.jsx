@@ -120,7 +120,6 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
           key={tileUrl}
           url={tileUrl}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          className={isDarkMode ? "map-tiles-dark-mode" : ""}
         />
 
         {/* Draw dashed polyline connecting points */}

@@ -19,6 +19,6 @@ html, body, #root {
 }
 
 /* Fake Dark Mode for standard map tiles */
-.map-tiles-dark-mode {
+.dark .leaflet-tile-pane {
   filter: invert(1) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
