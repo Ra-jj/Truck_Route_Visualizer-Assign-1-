@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { calculateDistance, interpolateCoordinates } from '../utils/geo';
 
 const TICK_RATE_MS = 100; // How often the simulation updates
-const LEG_DURATION_MS = 8000; // How long a single leg takes (8 seconds)
-const PROGRESS_PER_TICK = TICK_RATE_MS / LEG_DURATION_MS;
+const SPEED_UP_FACTOR = 200; // 200x real-time speed
+const ASSUMED_SPEED_KMH = 40; // 40 km/h average speed
 
 export function useTruckSimulation(route) {
   // We need at least 2 points for a route
@@ -49,10 +49,21 @@ export function useTruckSimulation(route) {
 
     // Simulate an async API ping by awaiting a short timeout
     await new Promise(resolve => setTimeout(resolve, 0));
-    const timestamp = Date.now();
 
     setProgress(prev => {
-      let nextProgress = prev + PROGRESS_PER_TICK;
+      // Calculate how much progress to add this tick based on constant real-world speed
+      const currentLegTotalDist = legDistances.current[currentLegIndex] || 1; // Fallback to 1km to avoid div by zero
+      
+      // Calculate real-world duration in seconds for this leg
+      const legDurationSeconds = (currentLegTotalDist / ASSUMED_SPEED_KMH) * 3600;
+      
+      // Scale down by our speed up factor and convert to ms
+      const simulatedDurationMs = (legDurationSeconds / SPEED_UP_FACTOR) * 1000;
+      
+      // Calculate how much of the leg we cover in a single 100ms tick
+      const progressPerTick = TICK_RATE_MS / simulatedDurationMs;
+
+      let nextProgress = prev + progressPerTick;
       
       if (nextProgress >= 1) {
         // Leg completed, move to next leg
@@ -62,7 +73,7 @@ export function useTruckSimulation(route) {
       
       return nextProgress;
     });
-  }, [isValidRoute, isPaused, isFinished]);
+  }, [isValidRoute, isPaused, isFinished, currentLegIndex, totalStops]);
 
   // Main simulation loop
   useEffect(() => {
