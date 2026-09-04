@@ -1,6 +1,6 @@
 # Logistics Truck Route Visualizer
 
-🔗 **[Live Demo](https://your-vercel-url-here.vercel.app)**
+🔗 **[Live Demo](https://truck-route-visualizer-monodip.vercel.app/)**
 
 ![Live Preview](./public/demo-screenshot.png)
 
