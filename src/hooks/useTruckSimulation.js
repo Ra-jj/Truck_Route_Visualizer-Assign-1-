@@ -63,17 +63,17 @@ export function useTruckSimulation(route) {
       // Calculate how much of the leg we cover in a single 100ms tick
       const progressPerTick = TICK_RATE_MS / simulatedDurationMs;
 
-      let nextProgress = prev + progressPerTick;
-      
-      if (nextProgress >= 1) {
-        // Leg completed, move to next leg
-        nextProgress = 0;
-        setCurrentLegIndex(prevIndex => Math.min(prevIndex + 1, totalStops));
-      }
-      
-      return nextProgress;
+      return prev + progressPerTick;
     });
-  }, [isValidRoute, isPaused, isFinished, currentLegIndex, totalStops]);
+  }, [isValidRoute, isPaused, isFinished, currentLegIndex]);
+
+  // Safely handle leg transitions in a separate effect to avoid React StrictMode double-invocations
+  useEffect(() => {
+    if (progress >= 1) {
+      setProgress(0);
+      setCurrentLegIndex(prevIndex => Math.min(prevIndex + 1, totalStops));
+    }
+  }, [progress, totalStops]);
 
   // Main simulation loop
   useEffect(() => {
