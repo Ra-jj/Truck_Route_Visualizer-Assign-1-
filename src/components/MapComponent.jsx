@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Polyline, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Polyline, Popup, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { routeData } from '../data/route';
@@ -114,7 +114,8 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
 
   return (
     <div className="w-full h-full relative">
-      <MapContainer center={initialCenter} zoom={12} className="w-full h-full">
+      <MapContainer center={initialCenter} zoom={12} zoomControl={false} className="w-full h-full">
+        <ZoomControl position="bottomleft" />
         <TileLayer
           key={tileUrl}
           url={tileUrl}
@@ -148,7 +149,7 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
           <Marker 
             position={
               simulation.isFinished 
-                ? [simulation.currentPosition.lat + 0.0005, simulation.currentPosition.lng] 
+                ? [simulation.currentPosition.lat + 0.0015, simulation.currentPosition.lng] 
                 : [simulation.currentPosition.lat, simulation.currentPosition.lng]
             }
             icon={truckIcon}
