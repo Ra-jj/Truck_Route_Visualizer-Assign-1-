@@ -17,3 +17,8 @@ html, body, #root {
   width: 100%;
   z-index: 10;
 }
+
+/* Fake Dark Mode for standard map tiles */
+.map-tiles-dark-mode {
+  filter: invert(1) hue-rotate(180deg) brightness(95%) contrast(90%);
+}

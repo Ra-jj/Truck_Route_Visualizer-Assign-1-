@@ -109,10 +109,8 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
 
   const simulation = useTruckSimulation(routeData);
 
-  // Switched to OSM to physically bypass CartoDB's API KEY REQUIRED watermark
-  const tileUrl = isDarkMode 
-    ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-    : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+  // Switched completely away from CartoDB to OSM as the sole provider
+  const tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
   return (
     <div className="w-full h-full relative">
@@ -121,7 +119,8 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
         <TileLayer
           key={tileUrl}
           url={tileUrl}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          className={isDarkMode ? "map-tiles-dark-mode" : ""}
         />
 
         {/* Draw dashed polyline connecting points */}
