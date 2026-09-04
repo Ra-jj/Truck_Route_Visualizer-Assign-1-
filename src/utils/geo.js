@@ -1,0 +1,36 @@
+/**
+ * Calculates the Haversine distance between two points on the Earth.
+ * Returns distance in kilometers (km).
+ */
+export function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the Earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c; // Distance in km
+  
+  return distance;
+}
+
+/**
+ * Linear interpolation between start and end values based on progress (0 to 1).
+ */
+export function lerp(start, end, progress) {
+  return start + (end - start) * progress;
+}
+
+/**
+ * Interpolates coordinates between two points based on progress.
+ */
+export function interpolateCoordinates(startPoint, endPoint, progress) {
+  return {
+    lat: lerp(startPoint.lat, endPoint.lat, progress),
+    lng: lerp(startPoint.lng, endPoint.lng, progress)
+  };
+}
