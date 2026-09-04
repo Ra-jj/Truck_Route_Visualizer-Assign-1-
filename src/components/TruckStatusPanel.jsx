@@ -31,7 +31,7 @@ const TruckStatusPanel = ({
   const etaMinutes = isFinished ? 0 : Math.ceil((remainingDistance / 40) * 60);
 
   return (
-    <div className="absolute bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 md:p-6 md:w-[340px] z-[1000] border border-gray-100/50 dark:border-slate-700/50">
+    <div className="absolute bottom-[10px] right-[10px] bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 md:p-6 w-[calc(100%-20px)] md:w-[340px] z-[1000] border border-gray-100/50 dark:border-slate-700/50">
       <div className="flex items-center justify-between mb-4 md:mb-5 pb-3 md:pb-4 border-b border-gray-100 dark:border-slate-700">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <Truck size={24} />

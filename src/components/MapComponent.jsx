@@ -120,15 +120,15 @@ const MapComponent = ({ isDarkMode }) => {
 
   const tileUrl = isDarkMode 
     ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-    : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+    : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
 
   return (
     <div className="w-full h-full relative">
-      <MapContainer center={initialCenter} zoom={13} className="w-full h-full">
+      <MapContainer center={initialCenter} zoom={12} className="w-full h-full">
         <MapController position={simulation.currentPosition} />
         <TileLayer
           url={tileUrl}
-          attribution='&copy; OpenStreetMap contributors &copy; CARTO'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
 
         {/* Draw dashed polyline connecting points */}
@@ -174,7 +174,7 @@ const MapComponent = ({ isDarkMode }) => {
       </div>
 
       {/* Legend Overlay */}
-      <div className="absolute top-4 left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-xl shadow-lg z-[1000] border border-gray-100 dark:border-slate-700 flex flex-col gap-2 md:gap-3">
+      <div className="absolute top-[10px] left-[10px] bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-xl shadow-lg z-[1000] border border-gray-100 dark:border-slate-700 flex flex-col gap-2 md:gap-3">
         <h3 className="text-[10px] md:text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-0 md:mb-1">Legend</h3>
         <div className="flex items-center gap-2 text-xs md:text-sm text-gray-700 dark:text-gray-300">
           <CircleDot size={16} className="text-green-500" /> Origin
