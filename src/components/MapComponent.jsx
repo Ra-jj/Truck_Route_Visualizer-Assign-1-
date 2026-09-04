@@ -7,8 +7,8 @@ import { useTruckSimulation } from '../hooks/useTruckSimulation';
 import TruckStatusPanel from './TruckStatusPanel';
 import ControlToolbar from './ControlToolbar';
 
-// Truck icon
-const truckIcon = new L.DivIcon({
+// Truck icon factory
+const getTruckIcon = (isFinished) => new L.DivIcon({
   className: 'custom-icon',
   html: `
     <div style="
@@ -21,6 +21,8 @@ const truckIcon = new L.DivIcon({
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.3s ease;
+      ${isFinished ? 'transform: translate(-15px, -20px);' : ''}
     ">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M10 17h4V5H2v12h3"></path>
@@ -147,12 +149,8 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
         {/* Animated Truck Marker */}
         {simulation.currentPosition && (
           <Marker 
-            position={
-              simulation.isFinished 
-                ? [simulation.currentPosition.lat + 0.0015, simulation.currentPosition.lng] 
-                : [simulation.currentPosition.lat, simulation.currentPosition.lng]
-            }
-            icon={truckIcon}
+            position={[simulation.currentPosition.lat, simulation.currentPosition.lng]}
+            icon={getTruckIcon(simulation.isFinished)}
             zIndexOffset={1000} // Keep truck on top
           >
             <Popup>Current Truck Location</Popup>
