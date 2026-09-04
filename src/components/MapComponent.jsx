@@ -22,7 +22,7 @@ const getTruckIcon = (isFinished) => new L.DivIcon({
       align-items: center;
       justify-content: center;
       transition: transform 0.3s ease;
-      ${isFinished ? 'transform: translate(-15px, -20px);' : ''}
+      ${isFinished ? 'transform: translate(-35px, -25px);' : ''}
     ">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M10 17h4V5H2v12h3"></path>
