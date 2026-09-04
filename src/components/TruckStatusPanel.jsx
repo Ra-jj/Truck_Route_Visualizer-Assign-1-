@@ -25,7 +25,7 @@ const TruckStatusPanel = ({
   const etaMinutes = isFinished ? 0 : Math.ceil((remainingDistance / 40) * 60);
 
   return (
-    <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl shadow-xl p-5 w-[calc(100%-32px)] md:w-[320px] z-[1000] border border-white/20 dark:border-slate-700/50">
+    <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:w-[320px] bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-5 z-[1000] border border-white/20 dark:border-slate-700/50">
       
       {/* Primary Status (Visual Hierarchy Focus) */}
       <div className="mb-4">

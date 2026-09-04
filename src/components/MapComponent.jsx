@@ -157,7 +157,7 @@ const MapComponent = ({ isDarkMode, onToggleTheme }) => {
       </MapContainer>
       
       {/* Top Left Minimal Legend Pill */}
-      <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3 py-2 rounded-full shadow-lg z-[1000] border border-gray-100 dark:border-slate-700/50 flex items-center gap-4">
+      <div className="absolute top-4 left-4 max-w-[calc(100%-140px)] sm:max-w-none bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 rounded-full shadow-lg z-[1000] border border-gray-100 dark:border-slate-700/50 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Origin</span>
