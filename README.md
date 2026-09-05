@@ -2,7 +2,7 @@
 
 🔗 **[Live Demo](https://truck-route-visualizer-monodip.vercel.app/)**
 
-![Live Preview](./public/demo-screenshot.png)
+![Live Preview](./public/demo-screenshot.jpg)
 
 A modern React application that visualizes a logistics truck's journey across multiple delivery points. Built with a focus on physics-based animation, clean architecture, and a custom UI aesthetic.
 
@@ -59,6 +59,7 @@ Make sure you have Node.js (v18+ recommended) installed.
 - **Effect Cleanup**: Leg-transition logic is isolated in specific `useEffect` hooks to handle React 19's StrictMode double-invocations without breaking the route index.
 - **API-Key Free**: By using base OpenStreetMap tiles and applying CSS inversion for dark mode, the application remains entirely free and open-source without displaying `API KEY REQUIRED` watermarks from providers like CartoDB or Mapbox.
 - **Performance**: Disabled aggressive Leaflet auto-panning to prevent the DOM map tile renderer from fighting the 100ms SVG interpolation updates, resulting in smooth movement.
+- **Mobile Viewport Height**: Uses `100dvh` (dynamic viewport height) instead of `100vh` for the main layout, ensuring the full Status Panel remains visible on real mobile browsers without requiring a scroll—`100vh` alone doesn't correctly account for mobile browser address bar chrome.
 
 ## 📝 License
 This project is open source and available under the [MIT License](LICENSE).

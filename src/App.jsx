@@ -14,7 +14,7 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <div className={`w-screen h-screen flex flex-col ${isDarkMode ? 'dark bg-slate-900' : 'bg-slate-50'}`}>
+    <div className={`w-screen h-[100dvh] flex flex-col ${isDarkMode ? 'dark bg-slate-900' : 'bg-slate-50'}`}>
       <main className="flex-1 w-full h-full relative">
         <MapComponent 
           isDarkMode={isDarkMode} 

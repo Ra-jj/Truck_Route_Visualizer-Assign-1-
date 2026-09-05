@@ -25,10 +25,10 @@ const TruckStatusPanel = ({
   const etaMinutes = isFinished ? 0 : Math.ceil((remainingDistance / 40) * 60);
 
   return (
-    <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:w-[320px] bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-5 z-[1000] border border-white/20 dark:border-slate-700/50">
+    <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:w-[320px] bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl shadow-xl p-3 sm:p-5 z-[1000] border border-white/20 dark:border-slate-700/50">
       
       {/* Primary Status (Visual Hierarchy Focus) */}
-      <div className="mb-4">
+      <div className="mb-2 sm:mb-4">
         <div className="flex items-center gap-2 mb-1">
           <Truck size={16} className="text-indigo-600 dark:text-indigo-400" />
           <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Live Status</span>
@@ -44,7 +44,7 @@ const TruckStatusPanel = ({
       </div>
 
       {/* Secondary Stats Grid */}
-      <div className="grid grid-cols-2 gap-3 mt-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-3 sm:mt-4">
         {/* Distance */}
         <div className="flex flex-col">
           <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Distance</span>
